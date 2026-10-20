@@ -1,0 +1,6 @@
+__pycache__/
+.chrome-preview*/
+.taste-skill/
+*.sqlite3
+*.db
+*.pyc

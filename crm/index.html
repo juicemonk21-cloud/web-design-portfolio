@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#172b37" />
+  <title>Northline — Client workspace</title>
+  <meta name="description" content="A concept CRM workspace for independent studios. Manage relationships and keep every project moving." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+    <symbol id="i-kanban" viewBox="0 0 24 24"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="10" rx="1.5"/><rect x="17" y="4" width="4" height="13" rx="1.5"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2H3Z"/><path d="M17 5a3 3 0 0 1 0 6M17 14a5 5 0 0 1 4 5v1h-3"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M4 17v3h16v-3"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+  </svg>
+
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#overview" aria-label="Northline home"><span class="brand-mark"><span></span><span></span><span></span></span><span>northline<span class="brand-dot">.</span></span></a>
+      <div class="workspace-label">Studio workspace <svg class="icon"><use href="#i-chevron"/></svg></div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-view="overview"><svg class="icon"><use href="#i-grid"/></svg> Overview</button>
+        <button class="nav-item" data-view="pipeline"><svg class="icon"><use href="#i-kanban"/></svg> Pipeline <span class="nav-count" id="navDealCount">12</span></button>
+        <button class="nav-item" data-view="contacts"><svg class="icon"><use href="#i-users"/></svg> Contacts</button>
+        <button class="nav-item" data-view="activity"><svg class="icon"><use href="#i-clock"/></svg> Activity</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="sidebar-note"><span class="note-stars">✳</span><p>Good work is built<br>on good relationships.</p></div>
+        <div class="user-row"><span class="avatar user-avatar">JD</span><span><strong>Jamie Dawson</strong><small>Workspace owner</small></span><svg class="icon"><use href="#i-more"/></svg></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar"><span id="breadcrumb">Workspace <span>/</span> Overview</span><div class="top-actions"><span class="demo-pill"><span></span> Concept demo</span><button class="avatar top-avatar" id="profileButton" title="Workspace owner">JD</button></div></header>
+      <div id="view" class="view"></div>
+    </main>
+  </div>
+
+  <div id="overlay" class="overlay" hidden></div>
+  <div id="drawer" class="drawer" role="dialog" aria-modal="true" aria-label="Deal details" hidden></div>
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-label="New deal" hidden></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

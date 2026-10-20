@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ecebe7">
+  <meta name="description" content="Hollow Form — portable light for the spaces you make your own. Discover the Morrow lamp.">
+  <title>Hollow Form — Morrow portable lamp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="Hollow Form home">HOLLOW<span>FORM</span></a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#morrow">The lamp</a>
+      <a href="#spaces">In your space</a>
+      <a href="#details">Details</a>
+    </nav>
+    <button class="bag-button" type="button" data-open-bag aria-label="Open bag, 0 items">Bag <span class="bag-count">0</span></button>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-card">
+        <div class="stripe" aria-hidden="true"></div>
+        <div class="hero-card-inner">
+          <h1 id="hero-title">A LITTLE<br>MORE LIGHT.</h1>
+          <p class="hero-copy">Morrow is a portable lamp with the presence of a sculpture. Made to move as you do.</p>
+          <a class="button button-dark" href="#morrow">Meet Morrow <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-card-foot">
+          <span>Glass. Metal. A softer evening.</span>
+          <span>Scroll to explore ↓</span>
+        </div>
+      </div>
+      <div class="hero-image" aria-label="Morrow lamp illuminating a living room at dusk">
+        <img src="assets/morrow-evening.png" width="1536" height="1024" alt="Olive glass Morrow lamp glowing on a walnut table beside an upholstered chair" fetchpriority="high">
+        <div class="hero-image-caption">Morrow / Olive glass</div>
+      </div>
+    </section>
+
+    <section class="intro section-pad" id="morrow" aria-labelledby="intro-title">
+      <div class="intro-heading">
+        <h2 id="intro-title">LIGHT THAT<br>GOES WITH YOU.</h2>
+        <p>From a slow morning to the last page of the night, Morrow brings a pool of warm light wherever you settle.</p>
+      </div>
+      <div class="facts" aria-label="Morrow at a glance">
+        <div><strong>10 hours</strong><span>of portable light*</span></div>
+        <div><strong>3 levels</strong><span>of dimming*</span></div>
+        <div><strong>USB-C</strong><span>easy recharging*</span></div>
+        <div><strong>$280</strong><span>illustrative price*</span></div>
+      </div>
+      <p class="sample-note">*Concept specifications and pricing shown for demonstration.</p>
+    </section>
+
+    <section class="showcase" id="spaces" aria-labelledby="spaces-title">
+      <div class="showcase-copy">
+        <h2 id="spaces-title">ONE LAMP.<br>YOUR WHOLE DAY.</h2>
+        <p>Move from daylight to after dark. The form stays quietly at home in every setting.</p>
+        <div class="scene-controls" role="group" aria-label="Choose a scene">
+          <button type="button" class="scene-button is-active" data-scene="evening" aria-pressed="true">After dark</button>
+          <button type="button" class="scene-button" data-scene="daylight" aria-pressed="false">By daylight</button>
+        </div>
+      </div>
+      <div class="scene-frame">
+        <img class="scene-image is-active" data-image="evening" src="assets/morrow-evening.png" width="1536" height="1024" alt="Morrow casting a warm glow across an evening living room" loading="lazy">
+        <img class="scene-image" data-image="daylight" src="assets/morrow-daylight.png" width="1254" height="1254" alt="Morrow on a travertine shelf in a sunlit room" loading="lazy">
+        <span class="scene-caption" aria-live="polite">A softer evening, wherever you are.</span>
+      </div>
+    </section>
+
+    <section class="product section-pad" aria-labelledby="product-title">
+      <div class="product-image">
+        <img src="assets/morrow-studio.png" width="1120" height="1400" alt="Close view of Morrow's olive glass shade and brushed metal base" loading="lazy">
+      </div>
+      <div class="product-copy">
+        <p class="product-name">The Morrow lamp</p>
+        <h2 id="product-title">MADE TO<br>BE SEEN.</h2>
+        <p>Smoked glass softens the light. Brushed metal gives the silhouette its balance. A simple touch changes the mood.</p>
+        <div class="purchase-line"><span>Olive glass / brushed metal</span><strong>$280*</strong></div>
+        <button class="button button-dark add-button" type="button" data-add-bag>Add to bag <span aria-hidden="true">↗</span></button>
+        <p class="sample-note">*Portfolio concept. Orders are not processed.</p>
+      </div>
+    </section>
+
+    <section class="details" id="details" aria-labelledby="details-title">
+      <div class="details-sheet">
+        <h2 id="details-title">THE DETAILS.</h2>
+        <p class="details-intro">Good design feels straightforward in use and considered in every part.</p>
+        <dl>
+          <div><dt>Shade</dt><dd>Smoked olive glass*</dd></div>
+          <div><dt>Body</dt><dd>Brushed metal*</dd></div>
+          <div><dt>Light</dt><dd>Warm, dimmable LED*</dd></div>
+          <div><dt>Power</dt><dd>Rechargeable via USB-C*</dd></div>
+          <div><dt>Controls</dt><dd>Touch dimmer*</dd></div>
+        </dl>
+        <p class="sample-note">*Illustrative details for this concept.</p>
+      </div>
+      <div class="details-side">
+        <img src="assets/morrow-daylight.png" width="1254" height="1254" alt="Morrow's sculptural silhouette in natural light" loading="lazy">
+        <p>Designed to look as considered in the daylight as it does when lit.</p>
+      </div>
+    </section>
+
+    <section class="closing" aria-labelledby="closing-title">
+      <p>There is always room for better light.</p>
+      <div class="closing-card">
+        <div class="stripe" aria-hidden="true"></div>
+        <h2 id="closing-title">TAKE IT<br>WITH YOU.</h2>
+        <p>Bring Morrow into your everyday spaces.</p>
+        <button class="button button-dark" type="button" data-add-bag>Add to bag <span aria-hidden="true">↗</span></button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="footer-mark" href="#top">HOLLOW FORM</a>
+    <div class="footer-copy"><p>Objects for the spaces between moments.</p><p>Hollow Form is a portfolio concept. Product details and prices are illustrative.</p></div>
+    <div class="footer-links"><a href="#morrow">The lamp</a><a href="#spaces">In your space</a><a href="#details">Details</a></div>
+    <span class="footer-end">© 2026 Hollow Form</span>
+  </footer>
+
+  <div class="bag-backdrop" data-close-bag hidden></div>
+  <aside class="bag-drawer" role="dialog" aria-modal="true" aria-labelledby="bag-title" aria-hidden="true" inert>
+    <div class="bag-head"><h2 id="bag-title">YOUR BAG.</h2><button type="button" class="close-button" data-close-bag aria-label="Close bag">×</button></div>
+    <div class="bag-body">
+      <p class="bag-empty">Your bag is empty. Morrow is ready when you are.</p>
+      <div class="bag-item" hidden>
+        <img src="assets/morrow-studio.png" width="1120" height="1400" alt="Morrow lamp">
+        <div><strong>Morrow</strong><span>Olive glass / brushed metal</span><div class="qty-controls"><button type="button" data-decrease aria-label="Remove one Morrow lamp">−</button><output class="item-qty">1</output><button type="button" data-increase aria-label="Add one Morrow lamp">+</button></div></div>
+        <strong class="item-total">$280</strong>
+      </div>
+    </div>
+    <div class="bag-foot"><div class="subtotal"><span>Subtotal</span><strong>$0</strong></div><p>This is a portfolio concept. Checkout is not connected.</p><button type="button" class="button button-dark" data-close-bag>Continue exploring</button></div>
+  </aside>
+</body>
+</html>
