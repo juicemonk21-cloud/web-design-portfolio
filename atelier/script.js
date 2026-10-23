@@ -1,69 +1,164 @@
-const rooms = {
-  sea: {
-    image: 'assets/hero-suite.webp', alt: 'Sea Suite with a private view of the Adriatic',
-    title: 'Wake to the horizon.',
-    description: 'A generous suite with natural stone, soft linen, and a sea view worth lingering over. Open the doors and let the morning in.',
-    facts: ['Private sea-facing terrace', 'King bed', 'Up to two guests'], select: 'Sea Suite'
-  },
-  courtyard: {
-    image: 'assets/courtyard-suite.webp', alt: 'Courtyard Suite with natural linen and limestone details',
-    title: 'A slower morning awaits.',
-    description: 'A calm retreat with layered textures, thoughtful details, and a secluded terrace for reading long past breakfast.',
-    facts: ['Secluded terrace', 'King bed', 'Up to two guests'], select: 'Courtyard Suite'
+(() => {
+  const year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
+
+  const menuToggle = document.querySelector('.menu-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+  const closeMenu = () => {
+    if (!menuToggle || !mobileNav) return;
+    mobileNav.hidden = true;
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'Open menu');
+  };
+  menuToggle?.addEventListener('click', () => {
+    const open = mobileNav.hidden;
+    mobileNav.hidden = !open;
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  mobileNav?.querySelectorAll('a, button').forEach(item => item.addEventListener('click', closeMenu));
+
+  const panel = document.querySelector('.booking-panel');
+  const backdrop = document.querySelector('.booking-backdrop');
+  const closeButton = document.querySelector('.booking-close');
+  const form = document.getElementById('stay-form');
+  const summary = document.getElementById('booking-summary');
+  const summaryDetails = document.getElementById('summary-details');
+  const error = document.getElementById('form-error');
+  const arrival = document.getElementById('arrival');
+  const departure = document.getElementById('departure');
+  const suite = document.getElementById('suite');
+  const submit = form?.querySelector('[type="submit"]');
+  let previousFocus = null;
+  let closeTimer = null;
+
+  const localDate = date => new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  const today = localDate(new Date());
+  if (arrival && departure) {
+    arrival.min = today;
+    departure.min = today;
+    arrival.addEventListener('change', () => {
+      departure.min = arrival.value || today;
+      if (departure.value && departure.value <= arrival.value) departure.value = '';
+    });
   }
-};
 
-const tabs = [...document.querySelectorAll('.room-tab')];
-const roomPhoto = document.getElementById('room-photo');
-const roomPanel = document.getElementById('room-panel');
-function setRoom(key) {
-  const room = rooms[key];
-  if (!room) return;
-  tabs.forEach(tab => { const active = tab.dataset.room === key; tab.classList.toggle('is-active', active); tab.setAttribute('aria-selected', String(active)); tab.tabIndex = active ? 0 : -1; });
-  roomPanel.setAttribute('aria-labelledby', `tab-${key}`);
-  roomPhoto.classList.add('is-changing');
-  const next = new Image(); next.src = room.image;
-  const swap = () => { roomPhoto.src = room.image; roomPhoto.alt = room.alt; roomPhoto.classList.remove('is-changing'); };
-  if (next.complete) setTimeout(swap, 170); else next.onload = swap;
-  document.getElementById('room-title').textContent = room.title;
-  document.getElementById('room-description').textContent = room.description;
-  document.getElementById('room-facts').replaceChildren(...room.facts.map(fact => { const item = document.createElement('li'); item.textContent = fact; return item; }));
-  document.getElementById('suite').value = room.select;
-}
-tabs.forEach((tab, index) => { tab.addEventListener('click', () => setRoom(tab.dataset.room)); tab.addEventListener('keydown', event => { if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); const next = tabs[(index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length]; next.focus(); setRoom(next.dataset.room); } }); });
+  function openBooking(trigger) {
+    if (!panel || !backdrop) return;
+    clearTimeout(closeTimer);
+    closeMenu();
+    previousFocus = trigger || document.activeElement;
+    const selected = trigger?.dataset.suite;
+    if (selected && suite) suite.value = selected;
+    panel.hidden = false;
+    backdrop.hidden = false;
+    document.body.classList.add('is-locked');
+    requestAnimationFrame(() => {
+      panel.classList.add('is-open');
+      backdrop.classList.add('is-open');
+      closeButton?.focus();
+    });
+  }
+  function closeBooking() {
+    if (!panel || panel.hidden) return;
+    panel.classList.remove('is-open');
+    backdrop?.classList.remove('is-open');
+    document.body.classList.remove('is-locked');
+    closeTimer = setTimeout(() => {
+      panel.hidden = true;
+      if (backdrop) backdrop.hidden = true;
+      previousFocus?.focus?.();
+    }, 450);
+  }
+  document.querySelectorAll('[data-open-booking]').forEach(button => button.addEventListener('click', () => openBooking(button)));
+  closeButton?.addEventListener('click', closeBooking);
+  backdrop?.addEventListener('click', closeBooking);
+  panel?.addEventListener('keydown', event => {
+    if (event.key !== 'Tab') return;
+    const focusable = [...panel.querySelectorAll('button, input:not(.honeypot), select, textarea')].filter(el => !el.disabled && !el.closest('[hidden]'));
+    if (!focusable.length) return;
+    const first = focusable[0], last = focusable.at(-1);
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape') return;
+    if (panel && !panel.hidden) closeBooking();
+    else if (mobileNav && !mobileNav.hidden) closeMenu();
+  });
 
-const menuToggle = document.querySelector('.menu-toggle');
-const mobileNav = document.getElementById('mobile-nav');
-function closeMenu() { mobileNav.hidden = true; menuToggle.setAttribute('aria-expanded', 'false'); menuToggle.setAttribute('aria-label', 'Open menu'); }
-menuToggle.addEventListener('click', () => { const open = mobileNav.hidden; mobileNav.hidden = !open; menuToggle.setAttribute('aria-expanded', String(open)); menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); });
-mobileNav.querySelectorAll('a, button').forEach(element => element.addEventListener('click', closeMenu));
+  const showError = (message, field) => {
+    if (!error) return;
+    error.textContent = message;
+    error.hidden = false;
+    field?.focus();
+  };
+  form?.addEventListener('submit', async event => {
+    event.preventDefault();
+    if (!error || !submit) return;
+    error.hidden = true;
+    const name = form.querySelector('[name="name"]');
+    const email = form.querySelector('[name="email"]');
+    if (!arrival?.value || !departure?.value) {
+      showError('Choose your arrival and departure dates.', !arrival?.value ? arrival : departure); return;
+    }
+    if (arrival.value < today) { showError('Arrival cannot be in the past.', arrival); return; }
+    if (departure.value <= arrival.value) { showError('Departure must be after arrival.', departure); return; }
+    if (!name?.value.trim()) { showError('Enter your name.', name); return; }
+    if (!email?.validity.valid || !email.value.trim()) { showError('Enter a valid email address.', email); return; }
 
-const panel = document.querySelector('.booking-panel');
-const backdrop = document.querySelector('.booking-backdrop');
-const closeButton = document.querySelector('.booking-close');
-let priorFocus;
-function openBooking() { priorFocus = document.activeElement; panel.hidden = false; backdrop.hidden = false; document.body.style.overflow = 'hidden'; requestAnimationFrame(() => { panel.classList.add('is-open'); backdrop.classList.add('is-open'); closeButton.focus(); }); }
-function closeBooking() { panel.classList.remove('is-open'); backdrop.classList.remove('is-open'); document.body.style.overflow = ''; setTimeout(() => { panel.hidden = true; backdrop.hidden = true; priorFocus?.focus(); }, 450); }
-document.querySelectorAll('[data-open-booking]').forEach(button => button.addEventListener('click', openBooking));
-closeButton.addEventListener('click', closeBooking); backdrop.addEventListener('click', closeBooking);
-panel.addEventListener('keydown', event => { if (event.key === 'Tab') { const focusable = [...panel.querySelectorAll('button, input, select')].filter(el => !el.closest('[hidden]')); const first = focusable[0], last = focusable.at(-1); if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); } else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); } } });
-document.addEventListener('keydown', event => { if (event.key === 'Escape') { if (!panel.hidden) closeBooking(); else if (!mobileNav.hidden) closeMenu(); } });
+    const originalLabel = submit.innerHTML;
+    submit.disabled = true;
+    submit.textContent = 'Sending…';
+    const data = Object.fromEntries(new FormData(form));
+    data._subject = 'Cala Selva concept — new stay inquiry';
+    data._template = 'table';
+    data._url = location.href;
+    data.message = data.message || data.notes || '';
+    delete data.notes;
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/d8320a4df9abf44157cd47da0234bcfb', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const result = await response.json();
+      if (!response.ok || result.success === false || result.success === 'false') {
+        if (/activation/i.test(result.message || '')) {
+          showError('The inquiry form is awaiting email activation. Please try again shortly.');
+          return;
+        }
+        throw new Error(result.message || 'The inquiry could not be sent.');
+      }
+      form.hidden = true;
+      if (summary && summaryDetails) {
+        summaryDetails.textContent = 'Your request has been sent to the designer. A reply will go to ' + email.value.trim() + '. No reservation has been made.';
+        summary.hidden = false;
+        summary.querySelector('button')?.focus();
+      }
+    } catch (cause) {
+      showError('We could not send your inquiry. Please try again in a moment.');
+    } finally {
+      submit.disabled = false;
+      submit.innerHTML = originalLabel;
+    }
+  });
+  document.getElementById('edit-stay')?.addEventListener('click', () => {
+    if (!form || !summary) return;
+    form.reset();
+    summary.hidden = true;
+    form.hidden = false;
+    form.querySelector('[name="name"]')?.focus();
+  });
 
-const arrival = document.getElementById('arrival');
-const departure = document.getElementById('departure');
-const today = new Date();
-const todayLocal = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().split('T')[0];
-arrival.min = todayLocal; departure.min = todayLocal;
-arrival.addEventListener('change', () => { departure.min = arrival.value || todayLocal; if (departure.value && departure.value <= arrival.value) departure.value = ''; });
-const stayForm = document.getElementById('stay-form');
-const error = document.getElementById('form-error');
-stayForm.addEventListener('submit', event => { event.preventDefault(); error.hidden = true; if (!arrival.value || !departure.value) { error.textContent = 'Choose your arrival and departure dates.'; error.hidden = false; (!arrival.value ? arrival : departure).focus(); return; } if (departure.value <= arrival.value) { error.textContent = 'Departure must be after arrival.'; error.hidden = false; departure.focus(); return; } const format = value => new Intl.DateTimeFormat('en', { month: 'long', day: 'numeric', year: 'numeric' }).format(new Date(`${value}T12:00:00`)); document.getElementById('summary-details').textContent = `${document.getElementById('suite').value} · ${format(arrival.value)} to ${format(departure.value)} · ${document.getElementById('guests').selectedOptions[0].textContent}. This is a preview only; no booking has been placed.`; stayForm.hidden = true; document.getElementById('booking-summary').hidden = false; document.getElementById('edit-stay').focus(); });
-document.getElementById('edit-stay').addEventListener('click', () => { document.getElementById('booking-summary').hidden = true; stayForm.hidden = false; arrival.focus(); });
-
-document.getElementById('year').textContent = new Date().getFullYear();
-const reveals = document.querySelectorAll('.reveal');
-if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  document.body.classList.add('motion-ready');
-  const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }); }, { threshold: .12, rootMargin: '0px 0px -20px 0px' });
-  reveals.forEach(element => observer.observe(element));
-} else reveals.forEach(element => element.classList.add('is-visible'));
+  const revealNodes = document.querySelectorAll('.reveal, .image-reveal');
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.body.classList.add('motion-ready');
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    }), { threshold: .08, rootMargin: '0px 0px -25px 0px' });
+    revealNodes.forEach(node => observer.observe(node));
+  } else revealNodes.forEach(node => node.classList.add('is-visible'));
+})();

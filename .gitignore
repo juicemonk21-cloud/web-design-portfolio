@@ -4,3 +4,6 @@ __pycache__/
 *.sqlite3
 *.db
 *.pyc
+atelier/screenshots/index-*.png
+atelier/screenshots/suites-*.png
+atelier/screenshots/experience-*.png

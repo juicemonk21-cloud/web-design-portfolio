@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#193741">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <meta name="description" content="Explore the Sea Suite and Courtyard Suite at Cala Selva, a coastal retreat concept in Puglia.">
+  <title>The Suites — Cala Selva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/hero-suite.webp" as="image">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="suites.css">
+  <script src="script.js" defer></script>
+</head>
+<body class="suites-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top" data-header-theme="light">
+    <a class="brand" href="index.html" aria-label="Cala Selva, home"><span class="brand-mark" aria-hidden="true">c<span>.</span>s</span><span class="brand-name">Cala Selva</span></a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="index.html">The house</a>
+      <a href="suites.html" aria-current="page">Suites</a>
+      <a href="experience.html">The place</a>
+    </nav>
+    <button class="header-book text-button" type="button" data-open-booking>Enquire about a stay <span aria-hidden="true">↗</span></button>
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span></button>
+  </header>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
+    <a href="index.html">The house</a><a href="suites.html" aria-current="page">Suites</a><a href="experience.html">The place</a>
+    <button type="button" data-open-booking>Enquire about a stay</button>
+  </nav>
+
+  <main id="main">
+    <section class="suites-hero" aria-labelledby="suites-title">
+      <div class="suites-hero-image image-reveal reveal"><img src="assets/hero-suite.webp" alt="A limestone suite opening directly to a view across the sea" width="1672" height="941" fetchpriority="high"></div>
+      <div class="suites-hero-copy"><p class="suites-eyebrow">Cala Selva / The suites</p><h1 id="suites-title">A place to<br><em>stay a while.</em></h1><p>Two ways to settle in. Both shaped by stone, light, and the pace of the coast.</p></div>
+      <a class="suites-hero-scroll" href="#rooms">Explore the rooms <span aria-hidden="true">↓</span></a>
+    </section>
+
+    <section class="suites-intro" id="rooms" aria-labelledby="rooms-title">
+      <p class="suites-eyebrow reveal">The rooms</p>
+      <div class="suites-intro-grid"><h2 id="rooms-title" class="reveal">Stay<br>your way.</h2><p class="reveal">Choose an open view of the water or the quiet of a sheltered courtyard. Each suite leaves space for the simple pleasure of doing less.</p></div>
+    </section>
+
+    <section class="suite-feature suite-feature-sea" id="sea-suite" aria-labelledby="sea-title">
+      <div class="suite-feature-media image-reveal reveal"><img src="assets/hero-suite.webp" alt="Sea Suite with a stone interior and uninterrupted sea view" width="1672" height="941" loading="lazy"></div>
+      <div class="suite-feature-copy reveal"><p class="suite-index">The sea facing suite</p><h2 id="sea-title">Wake to the<br><em>horizon.</em></h2><p class="suite-feature-description">The Sea Suite opens toward the water. Natural stone and soft linen give the view room to speak, while a terrace lets the morning last as long as you like.</p><ul class="suite-details"><li>Sea facing terrace</li><li>King bed</li><li>Up to two guests</li></ul><button class="suite-cta" type="button" data-open-booking data-suite="Sea Suite">Plan a stay in the Sea Suite <span aria-hidden="true">↗</span></button></div>
+    </section>
+
+    <section class="suite-feature suite-feature-courtyard" id="courtyard-suite" aria-labelledby="courtyard-title">
+      <div class="suite-feature-media image-reveal reveal"><img src="assets/courtyard-suite.webp" alt="Courtyard Suite with linen, limestone, and open doors to a terrace" width="1536" height="1024" loading="lazy"></div>
+      <div class="suite-feature-copy reveal"><p class="suite-index">The intimate suite</p><h2 id="courtyard-title">A quieter<br><em>kind of light.</em></h2><p class="suite-feature-description">The Courtyard Suite brings linen, limestone, and warm natural light together. Open the doors to the terrace, or linger inside for an unplanned afternoon.</p><ul class="suite-details"><li>Terrace</li><li>King bed</li><li>Up to two guests</li></ul><button class="suite-cta" type="button" data-open-booking data-suite="Courtyard Suite">Plan a stay in the Courtyard Suite <span aria-hidden="true">↗</span></button></div>
+    </section>
+
+    <figure class="suites-coast-photo image-reveal"><img src="assets/coast.webp" alt="Limestone steps leading down to a clear Adriatic cove" width="1536" height="1024" loading="lazy"></figure>
+    <section class="suites-outro" aria-labelledby="outro-title"><div class="suites-outro-inner reveal"><p class="suites-eyebrow">When you are ready</p><h2 id="outro-title">Leave room for<br><em>the unexpected.</em></h2><p>Tell us when you would like to stay, and we will get back to you about your request.</p><button type="button" data-open-booking>Send an inquiry <span aria-hidden="true">↗</span></button></div></section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-top"><p>A little more time, a little closer to the sea.</p><a href="#top">Back to top ↑</a></div><div class="footer-wordmark">Cala Selva</div><div class="footer-bottom"><span>Puglia, Italy</span><span>Coastal retreat concept</span><span>© <span id="year"></span> Cala Selva</span></div></footer>
+
+  <div class="booking-backdrop" hidden></div>
+  <aside class="booking-panel" role="dialog" aria-modal="true" aria-labelledby="booking-title" hidden>
+    <div class="booking-header"><span>Cala Selva</span><button class="booking-close" type="button" aria-label="Close stay planner">×</button></div>
+    <div class="booking-content"><p class="section-kicker">Your time by the sea</p><h2 id="booking-title">Plan a stay.</h2><p>This is a portfolio concept. Your inquiry goes to the designer, who can respond by email.</p>
+      <form id="stay-form" action="https://formsubmit.co/ajax/d8320a4df9abf44157cd47da0234bcfb" method="POST" novalidate><input type="hidden" name="_subject" value="Cala Selva concept - new stay inquiry"><input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true"><label for="arrival">Arrival</label><input id="arrival" name="arrival" type="date" required><label for="departure">Departure</label><input id="departure" name="departure" type="date" required><label for="suite">Your room</label><select id="suite" name="suite"><option>Sea Suite</option><option>Courtyard Suite</option></select><label for="guests">Guests</label><select id="guests" name="guests"><option value="1">1 guest</option><option value="2" selected>2 guests</option></select><label for="guest-name">Your name</label><input id="guest-name" name="name" type="text" autocomplete="name" required><label for="guest-email">Email address</label><input id="guest-email" name="email" type="email" autocomplete="email" required><label for="guest-notes">A note for us <span class="optional">(optional)</span></label><textarea id="guest-notes" name="notes" rows="3"></textarea><p class="form-error" id="form-error" role="alert" hidden></p><button class="form-submit" type="submit">Send inquiry <span aria-hidden="true">↗</span></button></form>
+      <div class="booking-summary" id="booking-summary" hidden aria-live="polite"><h3>Thank you for your inquiry.</h3><p id="summary-details"></p><button type="button" class="line-link" id="edit-stay">Send another inquiry ↗</button></div>
+    </div>
+  </aside>
+</body>
+</html>
