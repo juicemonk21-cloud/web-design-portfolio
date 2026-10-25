@@ -3,55 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0d0d0c">
-  <meta name="description" content="Nocte is a fictional restaurant concept: thoughtful food, a room made for evenings, and a simple way to reserve a table.">
-  <title>Nocte — An evening worth staying for</title>
-  <link rel="preconnect" href="https://api.fontshare.com">
-  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-  <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#15100f">
+  <meta name="description" content="Nocte is a fictional restaurant concept for evenings worth lingering over. Explore the menu, the room, and request a table.">
+  <title>Nocte — The night, served slowly</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Italiana&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="editorial.css">
   <script defer src="site.js"></script>
 </head>
 <body data-page="home">
-  <a class="skip-link" href="#main">Skip to content</a>
-  <div class="page-transition" aria-hidden="true"></div>
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Nocte home">nocte<span class="brand-period">.</span></a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span><span></span></button>
-    <nav id="site-nav" class="site-nav" aria-label="Main navigation">
-      <a class="active" aria-current="page" href="index.html">The evening</a>
-      <a href="menu.html">Menu</a>
-      <a href="space.html">The space</a>
-      <a class="nav-reserve" href="reserve.html">Reserve a table <span aria-hidden="true">↗</span></a>
-    </nav>
-  </header>
+  <a class="skip-link" href="#main">Skip to content</a><div class="page-transition" aria-hidden="true"></div>
+  <header class="site-header"><a class="brand" href="index.html" aria-label="Nocte home">Nocte</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span><span></span></button><nav id="site-nav" class="site-nav" aria-label="Main navigation"><a class="active" aria-current="page" href="index.html">The evening</a><a href="menu.html">Menu</a><a href="space.html">The space</a><a class="nav-reserve" href="reserve.html">Reserve a table <span aria-hidden="true">↗</span></a></nav></header>
   <main id="main">
-    <section class="hero home-hero">
-      <div class="hero-photo media-frame"><img src="assets/hero.webp" alt="Low lit restaurant dining room prepared for an evening service" fetchpriority="high"></div>
-      <h1 class="hero-wordmark" aria-label="Nocte">nocte<span>.</span></h1>
-      <a class="scroll-cue" href="#story" aria-label="Discover Nocte">Scroll to discover <span aria-hidden="true">↓</span></a>
-    </section>
-
-    <section class="intro-section section-wrap" id="story">
-      <div class="intro-side reveal"><p>Good food takes its time.<br>So should you.</p></div>
-      <p class="intro-statement reveal">The lights get lower. The night gets longer.</p>
-    </section>
-
-    <section class="featured-section section-wrap">
-      <div class="feature-heading reveal"><h2>On the plate.</h2><p>Seasonal plates, open fire, and a menu that follows what tastes best right now.</p></div>
-      <div class="feature-image media-frame reveal"><img src="assets/dish.webp" alt="Carefully plated seasonal dish in dramatic warm light" loading="lazy"></div>
-      <div class="feature-end reveal"><span>From the kitchen</span><a class="text-link" href="menu.html">Explore the menu <span aria-hidden="true">↗</span></a></div>
-    </section>
-
-    <section class="room-section section-wrap">
-      <div class="room-image media-frame reveal"><img src="assets/room.webp" alt="Warm dining room with intimate seating and low evening light" loading="lazy"></div>
-      <div class="room-copy reveal"><h2>Stay awhile.</h2><p>Familiar enough to settle in. Different enough to remember. Find your corner and let the night unfold.</p><a class="text-link" href="space.html">Step inside <span aria-hidden="true">↗</span></a></div>
-    </section>
-
-    <section class="table-moment section-wrap"><div class="table-moment-image media-frame reveal"><img src="assets/table.webp" alt="A quiet table ready for two" loading="lazy"></div><p class="reveal">Never rush the night.</p></section>
-
-    <section class="home-reserve section-wrap reveal"><p>A table is waiting.</p><a class="big-link" href="reserve.html">Join us tonight <span aria-hidden="true">↗</span></a><span>Tuesday–Sunday · dinner from 5 pm</span></section>
-  </main>
-  <footer class="site-footer"><div><span>Nocte is an independent restaurant concept.</span><span>All imagery and details are for demonstration.</span></div><nav aria-label="Footer navigation"><a href="menu.html">Menu</a><a href="space.html">Space</a><a href="reserve.html">Reservations</a></nav><span>© 2026 Nocte</span></footer>
-</body>
-</html>
+    <section class="editorial-hero" aria-labelledby="hero-title"><div class="hero-stage"><img src="assets/nocte-editorial.webp" alt="Sculptural seasonal plate in deep evening light" fetchpriority="high"></div><div class="hero-meta"><span>Dining, after dark</span><span>Tuesday — Sunday · From 5 pm</span></div><div class="hero-title-wrap"><h1 id="hero-title">The night,<br><em>served slowly.</em></h1><p>Seasonal food. A room made for staying. Your evening starts here.</p></div><a class="hero-explore" href="#story">Explore Nocte <span aria-hidden="true">↓</span></a><a class="hero-reserve" href="reserve.html">Reserve a table <span aria-hidden="true">↗</span></a></section>
+    <section class="manifesto" id="story" aria-labelledby="manifesto-title"><div class="manifesto-top"><p>The room changes when the sun goes down.</p><span>At Nocte</span></div><h2 id="manifesto-title">A little less hurry.<br>A lot more <i>night.</i></h2><div class="manifesto-bottom"><p>We cook with the season, pour another glass, and leave enough room for the conversation to find its way.</p><a href="space.html">Come inside <span aria-hidden="true">↗</span></a></div></section>
+    <section class="food-story" aria-labelledby="food-title"><div class="food-photo" data-reveal><img src="assets/dish.webp" alt="A carefully plated seasonal dish" loading="lazy"></div><div class="food-copy"><span>From the kitchen</span><h2 id="food-title">Made for<br>the moment.</h2><p>Our menu follows what tastes best right now. Familiar ingredients, open fire, and just enough surprise.</p><a href="menu.html">Explore the menu <span aria-hidden="true">↗</span></a></div></section>
+    <section class="interlude" aria-label="Nocte dining philosophy"><p>Good evenings are never measured in hours.</p></section>
+    <section class="space-story" aria-labelledby="space-title"><div class="space-story-head"><h2 id="space-title">Find your<br><i>corner.</i></h2><p>Low light. Warm tables. The feeling that there is nowhere else you need to be.</p></div><div class="space-panorama" data-reveal><img src="assets/room.webp" alt="The warmly lit Nocte dining room" loading="lazy"></div><div class="space-story-foot"><span>A room to settle into</span><a href="space.html">Explore the space <span aria-hidden="true">↗</span></a></div></section>
+    <section class="closing" aria-labelledby="closing-title"><div class="closing-photo" data-reveal><img src="assets/table.webp" alt="An intimate table ready for two" loading="lazy"></div><div class="closing-copy"><p>Stay as long as you like.</p><h2 id="closing-title">Your table<br>is waiting.</h2><a href="reserve.html">Make an evening of it <span aria-hidden="true">↗</span></a></div></section>
+  </main><footer class="site-footer"><div><strong>Nocte</strong><span>An independent restaurant concept.</span><span>All imagery and details are for demonstration.</span></div><nav aria-label="Footer navigation"><a href="menu.html">Menu</a><a href="space.html">Space</a><a href="reserve.html">Reservations</a></nav><span>© 2026 Nocte</span></footer>
+</body></html>

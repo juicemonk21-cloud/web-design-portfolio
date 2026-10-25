@@ -13,12 +13,14 @@ The reservation form validates the date, time, party size, table and contact det
 
 ## Run locally
 
-Open `index.html` directly, or run `py -m http.server 8000` from this folder and open `http://localhost:8000`. There is no build step or framework dependency. The Switzer font loads from Fontshare and falls back to Arial when offline.
+Open `index.html` directly, or run `py -m http.server 8000` from this folder and open `http://localhost:8000`. There is no build step or framework dependency. Italiana and DM Sans load from Google Fonts, with local serif and sans-serif fallbacks.
 
 ## Imagery
 
-The six local images in `assets/` were generated for this concept. They depict a fictional venue and are not photographs of a real restaurant.
+The original six local images in `assets/` depict a fictional venue. The redesign adds `nocte-editorial.webp`, a generated still life created specifically for the new home hero. None of the images are photographs of a real restaurant.
 
 ## Design references
 
-The art direction was informed by dark restaurant and café references on [Refero](https://styles.refero.design/?q=restaurant). [Lenis](https://github.com/darkroomengineering/lenis), [Swup](https://github.com/swup/swup), [PhotoSwipe](https://github.com/dimsemenov/PhotoSwipe), [Swiper](https://github.com/nolimits4web/swiper), and [Three.js](https://github.com/mrdoob/three.js) were evaluated as open-source interaction references. This demo implements its transitions, gallery and table map with native browser APIs so the four pages also run without a build process.
+The redesign treats Nocte as an after-dark gastronomic journal. Editorial type scale and composition were informed by [Redis Agency on Refero](https://styles.refero.design/style/4406799b-1586-4d84-aac9-e6acdee0f679); its isolated subject and restrained chrome take cues from [ORYZO on Refero](https://styles.refero.design/style/1f204e95-454a-437e-845b-c1b169d35607). The scroll image reveals were researched against the MIT-licensed [Codrops DoubleImageHoverEffects](https://github.com/codrops/DoubleImageHoverEffects) and [OnScrollColumnsRows](https://github.com/codrops/OnScrollColumnsRows). This static project implements the motion with browser APIs, so it remains dependency-free and respects reduced-motion settings.
+
+The four pages retain the interactive menu and demo table request. `editorial.css` carries the new visual system; `styles.css` retains the original page layout and functional component styles.

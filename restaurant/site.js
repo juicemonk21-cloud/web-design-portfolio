@@ -22,30 +22,14 @@
 
   if (!reduceMotion && 'IntersectionObserver' in window) {
     document.documentElement.classList.add('js-motion');
-    document.querySelectorAll('.menu-intro,.menu-tabs,.menu-group,.menu-outro .media-frame,.menu-outro>div:last-child,.space-hero h1,.space-hero p,.booking-lead,.booking-form .form-grid,.floorplan-heading,.floorplan,.note-label,.booking-submit,.faq-row').forEach((element) => element.classList.add('reveal'));
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          observer.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
       });
-    }, { threshold: 0.07, rootMargin: '0px 0px 50px 0px' });
-    document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
-
-    const wordmark = document.querySelector('.hero-wordmark');
-    if (wordmark) {
-      let ticking = false;
-      window.addEventListener('scroll', () => {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(() => {
-          const progress = Math.min(window.scrollY / Math.max(window.innerHeight, 1), 1);
-          wordmark.style.transform = `scale(${1 - progress * 0.045})`;
-          ticking = false;
-        });
-      }, { passive: true });
-    }
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('[data-reveal]').forEach((element) => observer.observe(element));
   }
 
   document.querySelectorAll('a[href$=".html"]').forEach((link) => {
